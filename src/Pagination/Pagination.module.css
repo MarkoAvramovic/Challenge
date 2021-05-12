@@ -1,0 +1,16 @@
+.Pagination {
+  border: black solid 1px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  align-items: center;
+}
+
+.Pagination:focus {
+  color: black;
+  background-color: rgb(167, 156, 156);
+}
+.Box {
+  text-align: center;
+}

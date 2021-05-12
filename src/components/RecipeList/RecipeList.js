@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import RecipeListitems from "../RecipeListitems";
 import "./RecipeList.css";
 import axios from "axios";
-import Pagination from "../Pagination";
+import Pagination from "../../Pagination/Pagination";
 
 function RecipeList() {
   const [recipes, setRecipes] = useState({
@@ -17,12 +17,13 @@ function RecipeList() {
     const fetchedRecipes = await axios(
       `http://localhost:8081/recipes/?page=${currentPage}&search=${filter}`
     );
+
     setRecipes(fetchedRecipes.data);
   };
 
   useEffect(() => {
     fetchRecipes();
-  }, [currentPage, filter, recipes]);
+  }, [filter, recipes]);
 
   return (
     <div className="listItem">
@@ -36,7 +37,10 @@ function RecipeList() {
         ></input>
 
         <RecipeListitems recipes={recipes}></RecipeListitems>
-        <Pagination></Pagination>
+        <Pagination
+          onChange={setPage}
+          totalPages={recipes.totalPages}
+        ></Pagination>
       </div>
     </div>
   );
